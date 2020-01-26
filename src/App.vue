@@ -1,14 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png">
     <div>
       <el-button @click="startHacking">Start</el-button>
-    </div>
+    </div> -->
+    <keep-alive>
+      <router-view v-wechat-title="$route.meta.title"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'app',
   methods: {
     startHacking () {
       this.$notify({
@@ -26,5 +30,7 @@ export default {
 #app {
   font-family: Helvetica, sans-serif;
   text-align: center;
+  width: 100%;
+  height: 100%
 }
 </style>
