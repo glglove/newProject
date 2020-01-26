@@ -14,7 +14,7 @@ export default {
       this.$notify({
         title: 'It works!',
         type: 'success',
-        message: 'We\'ve laid the ground work for you. It\'s time for you to build something epic!',
+        message: 'it works',
         duration: 5000
       })
     }
