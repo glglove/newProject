@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import { asyncRouterMap, constantRouterMap } from '@/router/index'
+import { constantRouterMap } from '../../router/index.js'
 
 /**
  * 通过meta.role判断是否与当前用户权限匹配

@@ -1,11 +1,11 @@
 /**
  * 路由跳转权限
  */
-import router from './router'
+import router from './router/index.js'
 import store from './store'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
-import { getToken } from '@/utils/auth.js' // 验权
+import { getToken } from './utils/auth.js' // 验权
 import { Message } from 'element-ui'
 
 // // permissiom judge

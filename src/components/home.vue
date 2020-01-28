@@ -1,7 +1,7 @@
 <!--
   User: gaol
   Date: 2020/01/26
-  功能： menu 导航组件
+  功能： home 页面
 -->
 
 <style lang="less" scoped>
@@ -9,9 +9,10 @@
 </style>
 
 <template>
-    <view>
+    <div>
+        这是home页面
         <menu-cmp></menu-cmp>
-    </view>
+    </div>
 </template>
 
 <script type="text/ecmascript-6">

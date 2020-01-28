@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 /* layout */
 // import Layout from '@/components/layout/Layout'
+// import Home from '@/components/home.vue'
 Vue.use(Router)
 
 /**
@@ -13,7 +14,7 @@ Vue.use(Router)
 export const constantRouterMap = [
   {
     path: '/',
-    component: () => import('@/components/home.vue'),
+    component: require("@/components/home.vue"),
     name: '登陆',
     noDropdown: true,
     hidden: true,
@@ -21,12 +22,18 @@ export const constantRouterMap = [
       title: '登录'
     }
   },
-  {
-    path: '*',
-    redirect: '/404',
-    // component: () => import('@/components/platform/approval-flow/table-manage/table-show'),
-    name: '404',
-    noDropdown: true,
-    hidden: true
-  }
+  // {
+  //   path: '*',
+  //   redirect: '/404',
+  //   // component: () => import('@/components/platform/approval-flow/table-manage/table-show'),
+  //   name: '404',
+  //   noDropdown: true,
+  //   hidden: true
+  // }
 ]
+
+export default new Router({
+  // mode: 'history', //后端支持可开
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRouterMap
+})

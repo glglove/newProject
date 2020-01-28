@@ -4,15 +4,20 @@
     <div>
       <el-button @click="startHacking">Start</el-button>
     </div> -->
+    <home></home>
     <keep-alive>
-      <router-view v-wechat-title="$route.meta.title"></router-view>
+      <router-view></router-view>
     </keep-alive>
   </div>
 </template>
 
 <script>
+import Home from '@/components/home.vue'
 export default {
   name: 'app',
+  components: {
+    Home
+  },
   methods: {
     startHacking () {
       this.$notify({
@@ -26,7 +31,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: Helvetica, sans-serif;
   text-align: center;

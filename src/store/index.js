@@ -3,11 +3,8 @@ import Vuex from 'vuex'
 import VuexPersistense from 'vuex-persistedstate' // vuex 数据持久化，防止刷新后vuex中数据消失
 import app from './modules/app'
 import pa from './modules/pa'
-import user from './modules/user'
 import permission from './modules/permission'
-import notice from './modules/notice'
 import salary from './modules/salary'
-import flow from './modules/flow'
 import directive from './modules/directive'
 import * as getters from './getters'
 import createLogger from 'vuex/dist/logger'
@@ -35,11 +32,8 @@ const store = new Vuex.Store({
   modules: {
     app,
     pa,
-    user,
     permission,
-    notice,
     salary,
-    flow,
     directive
   },
   getters,
