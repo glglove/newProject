@@ -10,7 +10,7 @@
 
 <template>
     <div>
-        这是home页面
+        这是home页面:
         <menu-cmp></menu-cmp>
     </div>
 </template>
