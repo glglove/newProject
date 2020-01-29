@@ -4,7 +4,7 @@
     <div>
       <el-button @click="startHacking">Start</el-button>
     </div> -->
-    <home></home>
+    <!-- <home></home> -->
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -31,7 +31,8 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="stylus" rel="stylesheet/stylus">
+// @import "~assets/css/index"
 #app {
   font-family: Helvetica, sans-serif;
   text-align: center;

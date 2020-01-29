@@ -13,23 +13,37 @@ Vue.use(Router)
 **/
 export const constantRouterMap = [
   {
-    path: '/',
-    component: require("@/components/home.vue"),
-    name: '登陆',
+    path: '/index',
+    component: () => import("@/components/home"),
+    name: 'home',
     noDropdown: true,
-    hidden: true,
+    hidden: false,
     meta: {
-      title: '登录'
+      title: '首页'
     }
   },
-  // {
-  //   path: '*',
-  //   redirect: '/404',
-  //   // component: () => import('@/components/platform/approval-flow/table-manage/table-show'),
-  //   name: '404',
-  //   noDropdown: true,
-  //   hidden: true
-  // }
+  {
+    path: '/login',
+    // redirect: '/index',
+    component: () => import("@/components/home"),
+    name: 'home',
+    noDropdown: true,
+    hidden: false,
+    meta: {
+      title: '首页'
+    }
+  },
+  {
+    path: '*',
+    redirect: '/404',
+    component: () => import("@/components/home"),
+    name: '404',
+    noDropdown: true,
+    hidden: false,
+    meta: {
+      title: 'error'
+    }
+  }
 ]
 
 export default new Router({

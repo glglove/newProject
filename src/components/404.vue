@@ -1,19 +1,16 @@
 <!--
   User: gaol
   Date: 2020/01/26
-  功能： home 页面
+  功能： error 页面
 -->
 
 <style lang="less" scoped>
-.tableBox{
-    height: 300px
-}
+
 </style>
 
 <template>
-    <div>
-        <menu-cmp></menu-cmp>
-        <div :class="['tableBox',noData? 'not_found':'']"></div>
+    <div :class="['page_error', noData?'not_found':'']">
+
     </div>
 </template>
 
@@ -25,7 +22,7 @@
         },
         data() {
             return {
-              noData: true
+                noData: true
             }
         }
     }

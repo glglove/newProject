@@ -22,7 +22,7 @@ const whiteList = ['/login', '/authredirect']// 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start() // 开启Progress
   if (getToken()) { // 判断是否有token,从cookie 中获取的，在 @/util/auth.js文件中
-    // debugger
+    debugger
     if (to.path === '/login') {
       next({ path: '/' })
       NProgress.done() // router在hash模式下 手动改变hash 重定向回来 不会触发afterEach 暂时hack方案
@@ -50,11 +50,12 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    // debugger
+    debugger
     if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()
     } else {
-      next('/login') // 否则全部重定向到登录页
+      debugger
+      next({path: '/login'}) // 否则全部重定向到登录页
       console.log("permissin 中获取 getToken() 为空故跳转到了 login页面")
       NProgress.done() // router在hash模式下 手动改变hash 重定向回来 不会触发afterEach 暂时hack方案
     }
