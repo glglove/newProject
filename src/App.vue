@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png">
-    <div>
-      <el-button @click="startHacking">Start</el-button>
-    </div> -->
-    <!-- <home></home> -->
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -32,11 +27,10 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-// @import "~assets/css/index"
-#app {
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-  width: 100%;
-  height: 100%
-}
+@import "./assets/css/index.styl"
+  #app 
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    width: 100%;
+    height: 100%
 </style>

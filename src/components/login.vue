@@ -14,14 +14,9 @@
     <div>
         <el-row>
             <el-col :span="24">
-
-                <div class="containerBox">
-                    内容区
-                </div>
-
-                <div class="footerBox">
-                    底部区
-                </div>
+                <el-card class="card-box">
+                    登陆页面
+                </el-card>
             </el-col>
         </el-row>
     </div>

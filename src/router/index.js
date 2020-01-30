@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 /* layout */
-// import Layout from '@/components/layout/Layout'
+import Layout from '@/components/common/Layout'
 // import Home from '@/components/home.vue'
 Vue.use(Router)
 
@@ -13,30 +13,41 @@ Vue.use(Router)
 **/
 export const constantRouterMap = [
   {
-    path: '/index',
-    component: () => import("@/components/home"),
-    name: 'home',
+    path: '/',
+    component: Layout,
+    name: '',
+    redirect: '/index',
     noDropdown: true,
     hidden: false,
     meta: {
       title: '首页'
-    }
-  },
-  {
-    path: '/login',
-    // redirect: '/index',
-    component: () => import("@/components/home"),
-    name: 'home',
-    noDropdown: true,
-    hidden: false,
-    meta: {
-      title: '首页'
-    }
+    },
+    children: [
+      {
+        path: 'login',
+        component: () => import("@/components/login"),
+        name: "首页-登陆",
+        noDropdown: true,
+        hidden: false,
+        meta: {
+          title: '首页-登陆'
+        }
+      },      
+      {
+        path: 'index',
+        component: () => import("@/components/home"),
+        name: "首页-首页",
+        noDropdown: true,
+        hidden: false,
+        meta: {
+          title: '首页-首页'
+        }
+      }
+    ]
   },
   {
     path: '*',
-    redirect: '/404',
-    component: () => import("@/components/home"),
+    component: () => import("@/components/404"),
     name: '404',
     noDropdown: true,
     hidden: false,
