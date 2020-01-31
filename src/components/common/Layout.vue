@@ -5,7 +5,15 @@
 -->
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-
+.el-row
+    height 100%
+    background #f4f7f9
+    .app-wrapper
+        height 100%
+        .routerCotentBox
+            height calc(100vh - 60px)
+            .contentBox
+                height 100%
 </style>
 
 <template>
@@ -16,7 +24,9 @@
             <div class="routerCotentBox">
                 <transition name="fade" mode="out-in">
                     <keep-alive>
-                        <router-view></router-view>
+                        <div class="contentBox">
+                            <router-view></router-view>
+                        </div>
                     </keep-alive>
                 </transition>
             </div>

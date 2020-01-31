@@ -48,16 +48,18 @@
                 text-color="#fff"
                 active-text-color="#ffd04b">
 
-                <el-menu-item index="1">发布需求</el-menu-item>
+                <el-menu-item index="1">首页</el-menu-item>
 
-                <el-submenu index="2">
+                <el-menu-item index="2">发布需求</el-menu-item>
+
+                <el-submenu index="3">
                     <template slot="title">项目大厅</template>
-                    <el-menu-item index="2-1">选项1</el-menu-item>
-                    <el-menu-item index="2-2">选项2</el-menu-item>
-                    <el-menu-item index="2-3">选项3</el-menu-item>
+                    <el-menu-item index="3-1">选项1</el-menu-item>
+                    <el-menu-item index="3-2">选项2</el-menu-item>
+                    <el-menu-item index="3-3">选项3</el-menu-item>
                 </el-submenu>
 
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">成为开发者</a></el-menu-item>
+                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">成为开发者</a></el-menu-item>
 
             </el-menu>
         </div>
