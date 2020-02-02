@@ -24,16 +24,6 @@ export const constantRouterMap = [
     },
     children: [
       {
-        path: 'login',
-        component: () => import("@/components/login"),
-        name: "首页-登陆",
-        noDropdown: true,
-        hidden: false,
-        meta: {
-          title: '首页-登陆'
-        }
-      },      
-      {
         path: 'index',
         component: () => import("@/components/home"),
         name: "首页-首页",
@@ -42,7 +32,37 @@ export const constantRouterMap = [
         meta: {
           title: '首页-首页'
         }
-      }
+      },      
+      {
+        path: 'login',
+        component: () => import("@/components/login"),
+        name: "首页-登陆",
+        noDropdown: true,
+        hidden: false,
+        meta: {
+          title: '首页-登陆'
+        }
+      },   
+      {
+        path: 'register',
+        component: () => import("@/components/register"),
+        name: "首页-注册",
+        noDropdown: true,
+        hidden: false,
+        meta: {
+          title: '首页-注册'
+        }
+      },    
+      {
+        path: 'forgetPassWord',
+        component: () => import("@/components/forgetPassWord"),
+        name: "首页-忘记密码",
+        noDropdown: true,
+        hidden: false,
+        meta: {
+          title: '首页-忘记密码'
+        }
+      },            
     ]
   },
   {

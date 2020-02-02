@@ -1,7 +1,7 @@
 <!--
   User: gaol
   Date: 2020/01/26
-  功能： 登陆 页面
+  功能： 注册 页面
 -->
 
 <style lang="stylus" rel="sheetStylus" scoped>
@@ -25,14 +25,13 @@
                 bottom 0
                 margin auto
                 width 500px
-                height 400px
+                height 500px
                 .el-card 
                     height 100%
                     .loginItemBox
                         .el-form
                             .fieldBox
-                                &:nth-of-type(1)
-                                    margin-bottom 30px  
+                                margin-bottom 30px  
                     .footerBox
                         margin-top -10px
                         .el-button
@@ -49,9 +48,12 @@
                             box-sizing border-box
                         .titBox
                             margin-top 20px
+                            padding 0 25px
+                            box-sizing border-box
                             .tit-noAccount
                                 font-size 14px
-                                color rgb(153, 153, 153)
+                                color rgb(22, 155, 213)
+                                cursor pointer
                             .tit-register
                                 color rgb(22, 155, 213)
                                 cursor pointer
@@ -64,7 +66,7 @@
             <el-col :span="24">
                 <div class="loginFormBox">
                     <el-card class="card-box">
-                        <h3 class="marginB20">登陆</h3>
+                        <h3 class="marginB20">注册</h3>
                         <div class="loginItemBox">
                             <el-form 
                                 ref="loginFormObj"
@@ -90,17 +92,17 @@
                             </el-form>                            
                         </div>
                         <div class="footerBox">
-                            <div class="forgetPassWord" @click="handlerForget">
+                            <!-- <div class="forgetPassWord">
                                 忘记密码
-                            </div>                            
+                            </div>                             -->
                             <el-button 
                                 style="width: 400px"
                                 type="primary"
-                                @click.native="submitLogin"
-                            >登陆</el-button>
-                            <div class="titBox marginT20">
-                                <span class="tit-noAccount">没有账号?</span>
-                                <span class="tit-register" @click="handlerRegister">立即注册</span>
+                                @click.native="submitRegister"
+                            >同意协议并注册</el-button>
+                            <div class="titBox marginT20 u-f-ac u-f-jsb">
+                                <span class="tit-noAccount">《服务协议》</span>
+                                <span class="tit-register" @click="handlerLogin">已有账号? 去登陆</span>
                             </div>
                         </div>
                     </el-card>
@@ -127,31 +129,53 @@
                         {
                             Id: 1,
                             Required: true,
-                            FieldCode: 'accound',
-                            FieldName: '用户名', 
-                            Tips: '请输入用户名',
+                            FieldCode: 'mobileNumber',
+                            FieldName: '手机号码', 
+                            Tips: '请输入手机号码',
                             Hidden: false,
                             FieldValue: '',
                             ControlType: '1', // 控件类型
-                            TextType: 1, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱
+                            TextType: 2, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱
                         },
                         {
                             Id: 2,
+                            FieldCode: 'verificationCode',
                             Required: true,
-                            FieldCode: 'passWord',
-                            FieldName: '密码',
-                            Tips: '请输入密码',
+                            FieldName: '验证码',
+                            Tips: '请输入验证码',
                             Hidden: false, 
                             FieldValue: '',
                             ControlType: '1', // 控件类型
                             TextType: 1, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
-                        }
+                        },
+                        {
+                            Id: 3,
+                            FieldCode: 'verificationCode',
+                            Required: true,
+                            FieldName: '验证码',
+                            Tips: '请输入验证码',
+                            Hidden: false, 
+                            FieldValue: '',
+                            ControlType: '1', // 控件类型
+                            TextType: 1, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
+                        },
+                        {
+                            Id: 4,
+                            FieldCode: 'verificationCode',
+                            Required: true,
+                            FieldName: '验证码',
+                            Tips: '请输入验证码',
+                            Hidden: false, 
+                            FieldValue: '',
+                            ControlType: '1', // 控件类型
+                            TextType: 1, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
+                        },                                                
                     ]
                 }
             }
         },
         methods: {
-            submitLogin(){
+            submitRegister(){
                 this.$refs.loginFormObj.validate(valid => {
                     if(valid){
                         this.$message({
@@ -163,14 +187,9 @@
                     }
                 })
             },
-            handlerRegister(){
+            handlerLogin(){
                 this.$router.push({
-                    path: '/register'
-                })
-            },
-            handlerForget(){
-                this.$router.push({
-                    path: '/forgetPassWord'
+                    path: '/login'
                 })
             }
         }

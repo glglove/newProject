@@ -46,9 +46,10 @@
                 @select="handleSelect"
                 background-color="#545c64"
                 text-color="#fff"
+                router
                 active-text-color="#ffd04b">
 
-                <el-menu-item index="1">首页</el-menu-item>
+                <el-menu-item index="/index">首页</el-menu-item>
 
                 <el-menu-item index="2">发布需求</el-menu-item>
 
@@ -73,7 +74,8 @@
             </el-button>
             <el-button 
                 type="primary" 
-                size="mini">
+                size="mini"
+                @click.native="handlerRegister">
                 注册
             </el-button>            
         </div>
@@ -91,11 +93,18 @@ export default {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
+      // 登陆
       handlerLogin(){
-          this.$router.push({
-              path: '/login'
-          })
-      }      
+        this.$router.push({
+            path: '/login'
+        })
+      },
+      // 注册
+      handlerRegister(){
+        this.$router.push({
+            path: '/register'
+        })
+      }     
     }
 }
 </script>

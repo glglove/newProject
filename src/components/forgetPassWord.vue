@@ -1,7 +1,7 @@
 <!--
   User: gaol
   Date: 2020/01/26
-  功能： 登陆 页面
+  功能： 忘记密码 页面
 -->
 
 <style lang="stylus" rel="sheetStylus" scoped>
@@ -64,7 +64,7 @@
             <el-col :span="24">
                 <div class="loginFormBox">
                     <el-card class="card-box">
-                        <h3 class="marginB20">登陆</h3>
+                        <h3 class="marginB20">找回密码</h3>
                         <div class="loginItemBox">
                             <el-form 
                                 ref="loginFormObj"
@@ -90,7 +90,7 @@
                             </el-form>                            
                         </div>
                         <div class="footerBox">
-                            <div class="forgetPassWord" @click="handlerForget">
+                            <div class="forgetPassWord">
                                 忘记密码
                             </div>                            
                             <el-button 
@@ -166,11 +166,6 @@
             handlerRegister(){
                 this.$router.push({
                     path: '/register'
-                })
-            },
-            handlerForget(){
-                this.$router.push({
-                    path: '/forgetPassWord'
                 })
             }
         }
