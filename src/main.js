@@ -10,7 +10,7 @@ import './icons/index.js' // 字体图标
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-
+Vue.prototype.$bus = new Vue()
 new Vue({
   // el: '#app',
   router,

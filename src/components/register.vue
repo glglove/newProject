@@ -139,10 +139,11 @@
                         },
                         {
                             Id: 2,
-                            FieldCode: 'verificationCode',
+                            FieldCode: 'verificationPicCode',
+                            picCodeUrl: require('../assets/pic/picCode.png'),
                             Required: true,
-                            FieldName: '验证码',
-                            Tips: '请输入验证码',
+                            FieldName: '校验码',
+                            Tips: '请输入校验码',
                             Hidden: false, 
                             FieldValue: '',
                             ControlType: '1', // 控件类型
@@ -150,10 +151,12 @@
                         },
                         {
                             Id: 3,
-                            FieldCode: 'verificationCode',
+                            FieldCode: 'verificationMobileCode', 
                             Required: true,
-                            FieldName: '验证码',
-                            Tips: '请输入验证码',
+                            FieldName: '短信验证码',
+                            Tips: '请输入短信验证码',
+                            isSendingStatus: false, // 短信验证码是否正在发送中
+                            countdown: 60, // 倒计时 
                             Hidden: false, 
                             FieldValue: '',
                             ControlType: '1', // 控件类型
@@ -161,10 +164,10 @@
                         },
                         {
                             Id: 4,
-                            FieldCode: 'verificationCode',
+                            FieldCode: 'verificationPassWord',
                             Required: true,
-                            FieldName: '验证码',
-                            Tips: '请输入验证码',
+                            FieldName: '登陆密码',
+                            Tips: '登陆密码',
                             Hidden: false, 
                             FieldValue: '',
                             ControlType: '1', // 控件类型

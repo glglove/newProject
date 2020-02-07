@@ -84,20 +84,7 @@ export default {
                             placeholder: '请填写密码',
                             inputValue: '',
                             required: false,
-                            messageTit: '请填写密码',
-                            validatorPass: (obj, callback) => {
-                                return (obj, callback) => {
-                                    if(obj && obj.required){
-                                        if(obj.inputValue) {
-                                            callback()
-                                        }else {
-                                            callback(new Error(`${obj.messageTit}`))
-                                        }
-                                    }else {
-                                        callback()
-                                    }                                    
-                                }
-                            },                              
+                            messageTit: '请填写密码',                            
                         }
                     ]
                 }
@@ -124,7 +111,7 @@ export default {
       itemRules(obj){
         return {
             required: obj.required,
-            validator: obj.validatorPass(obj, callback),
+            validator: obj.validatorPass(rule, value, callback),
             trigger: 'blur'
         }
       }        

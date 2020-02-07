@@ -17,92 +17,123 @@
             position relative
             height 100%
             width 100%
-            .loginFormBox
+            .forgetFormBox
                 position absolute
                 top 0
                 left 0
                 right 0
                 bottom 0
                 margin auto
-                width 500px
-                height 400px
+                width 900px
+                height 500px
                 .el-card 
                     height 100%
-                    .loginItemBox
-                        .el-form
-                            .fieldBox
-                                &:nth-of-type(1)
-                                    margin-bottom 30px  
-                    .footerBox
-                        margin-top -10px
-                        .el-button
-                            width 100%
-                        .forgetPassWord
-                            width 100%
-                            padding-right 30px
-                            color rgb(22, 155, 213)
-                            margin-top 5px
-                            margin-bottom 20px
-                            text-align right
-                            font-size 14px
-                            cursor pointer
-                            box-sizing border-box
-                        .titBox
-                            margin-top 20px
-                            .tit-noAccount
-                                font-size 14px
-                                color rgb(153, 153, 153)
-                            .tit-register
-                                color rgb(22, 155, 213)
-                                cursor pointer
-
+                    .forgetItemBox
+                        .firstStepForm
+                            .fieldBox_mobileNumber_0
+                                >>>.el-form-item
+                                    .el-form-item__content
+                                        .el-input 
+                                            margin-left -150px
+                        .secondStepForm
+                            >>>.el-form-item
+                                .el-form-item__content
+                                    .el-input
+                                        margin-left -150px
 </style>
 
 <template>
     <div class="loginBox">
         <el-row>
             <el-col :span="24">
-                <div class="loginFormBox">
+                <div class="forgetFormBox">
                     <el-card class="card-box">
                         <h3 class="marginB20">找回密码</h3>
-                        <div class="loginItemBox">
+                        <div class="stepTitBox">
+                            <el-steps :active="currentActive" align-center>
+                                <el-step title="步骤 1" description="输入您的账号"></el-step>
+                                <el-step title="步骤 2" description="安全验证与新密码设置"></el-step>
+                                <el-step title="步骤 3" description="设置成功"></el-step>
+                            </el-steps>
+                        </div>
+
+                        <div class="forgetItemBox marginT20">
                             <el-form 
-                                ref="loginFormObj"
-                                :model="loginFormObj"
+                                v-if="currentActive == 1"
+                                ref="firstStepForm"
+                                :model="firstStepForm"
+                                label-width="250px"
+                                class="firstStepForm"
                             >
-                                <!-- loginFormObj.Fields: {{loginFormObj.Fields}} -->
+                                <!-- firstStepForm.Fields: {{firstStepForm.Fields}} -->
                                 <div 
-                                    class="fieldBox"
-                                    v-for="(field, index) in loginFormObj.Fields"
+                                    :class="`fieldBox_${field.FieldCode}_${index}`"
+                                    v-for="(field, index) in firstStepForm.Fields"
                                     :key="index"
                                 >
                                     <!---动态显示form-item组件---->
                                     <component 
-                                        ref="`field_+ ${field.Id}`"
+                                        :ref="`field_+ ${field.Id}`"
                                         :is="currentComponent(field.ControlType)"
                                         :isNeedCheck = 'true'
                                         :prop="'Fields.' + index + '.FieldValue'"
                                         :obj.sync="field"
-                                        :isTitle="false"
+                                        :isTitle="true"
                                     >
                                     </component>
                                 </div>
-                            </el-form>                            
-                        </div>
-                        <div class="footerBox">
-                            <div class="forgetPassWord">
-                                忘记密码
-                            </div>                            
+                            </el-form>   
+
+                            <el-form 
+                                v-if="currentActive == 2"
+                                ref="secondStepForm"
+                                :model="secondStepForm"
+                                label-width="250px"
+                                class="secondStepForm"
+                            >
+                                <!-- secondStepForm.Fields: {{secondStepForm.Fields}} -->
+                                <div 
+                                    :class="`fieldBox_${field.FieldCode}_${index}`"
+                                    v-for="(field, index) in secondStepForm.Fields"
+                                    :key="index"
+                                >
+                                    <!---动态显示form-item组件---->
+                                    <component 
+                                        :ref="`field_+ ${field.Id}`"
+                                        :is="currentComponent(field.ControlType)"
+                                        :isNeedCheck = 'true'
+                                        :prop="'Fields.' + index + '.FieldValue'"
+                                        :obj.sync="field"
+                                        :isTitle="true"
+                                    >
+                                    </component>
+                                </div>
+                            </el-form>     
+
+                            <div class="thirdStepBox" v-if="currentActive == 3">
+                                <div style="width:84px; height:84px;margin: 0 auto">
+                                    <el-image
+                                        :src="require('../assets/pic/successful.png')"
+                                        style="width: 100%; height: 100%"
+                                        fit="fill"
+                                    >
+                                    </el-image>
+                                </div>
+                                <p 
+                                    style="color:rgb(21, 21, 25);font-weight: 700"
+                                    class="marginT20">
+                                    密码修改成功
+                                </p>
+                            </div>               
+                        </div>        
+
+                        <div class="footerBox marginT20">
                             <el-button 
-                                style="width: 400px"
                                 type="primary"
-                                @click.native="submitLogin"
-                            >登陆</el-button>
-                            <div class="titBox marginT20">
-                                <span class="tit-noAccount">没有账号?</span>
-                                <span class="tit-register" @click="handlerRegister">立即注册</span>
-                            </div>
-                        </div>
+                                style="width: 200px"
+                                @click.native="nextStep"
+                            >{{currentActive !=3 ? '下一步': '立即登陆'}}</el-button>
+                        </div>                
                     </el-card>
                 </div>
             </el-col>
@@ -122,37 +153,78 @@
         },
         data() {
             return {
-                loginFormObj: {
+                currentActive: 1, 
+                firstStepForm: {
                     Fields: [
                         {
                             Id: 1,
                             Required: true,
-                            FieldCode: 'accound',
-                            FieldName: '用户名', 
-                            Tips: '请输入用户名',
+                            FieldCode: 'mobileNumber',
+                            FieldName: '手机号码', 
+                            Tips: '请输入手机号码',
                             Hidden: false,
                             FieldValue: '',
                             ControlType: '1', // 控件类型
-                            TextType: 1, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱
+                            TextType: 2, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱
                         },
                         {
                             Id: 2,
+                            FieldCode: 'verificationPicCode',
+                            picCodeUrl: require('../assets/pic/picCode.png'),
                             Required: true,
-                            FieldCode: 'passWord',
-                            FieldName: '密码',
+                            FieldName: '校验码',
+                            Tips: '请输入校验码',
+                            Hidden: false, 
+                            FieldValue: '',
+                            ControlType: '1', // 控件类型
+                            TextType: "", // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
+                        },
+                        {
+                            Id: 3,
+                            FieldCode: 'verificationMobileCode', 
+                            Required: true,
+                            FieldName: '短信验证码',
+                            Tips: '请输入短信验证码',
+                            isSendingStatus: false, // 短信验证码是否正在发送中
+                            countdown: 60, // 倒计时 
+                            Hidden: false, 
+                            FieldValue: '',
+                            ControlType: '1', // 控件类型
+                            TextType: "", // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
+                        }                                            
+                    ]
+                },
+                secondStepForm: {
+                    Fields: [
+                        {
+                            Id: 1,
+                            Required: true,
+                            FieldCode: 'setPassWord',
+                            FieldName: '设置新密码',
                             Tips: '请输入密码',
                             Hidden: false, 
                             FieldValue: '',
                             ControlType: '1', // 控件类型
-                            TextType: 1, // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
-                        }
+                            TextType: "", // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
+                        },
+                        {
+                            Id: 2,
+                            Required: true,
+                            FieldCode: 'confirmPassWord',
+                            FieldName: '确认新密码',
+                            Tips: '请输入密码',
+                            Hidden: false, 
+                            FieldValue: '',
+                            ControlType: '1', // 控件类型
+                            TextType: "", // 1 表示 邮箱 2 表示 手机号码 3 表示 电话 4 手机号码或者邮箱                            
+                        }                                       
                     ]
-                }
+                }                
             }
         },
         methods: {
             submitLogin(){
-                this.$refs.loginFormObj.validate(valid => {
+                this.$refs.firstStepForm.validate(valid => {
                     if(valid){
                         this.$message({
                             type: 'info',
@@ -167,6 +239,36 @@
                 this.$router.push({
                     path: '/register'
                 })
+            },
+            nextStep(){
+                if(this.currentActive == 1){
+                    debugger
+                    // 第一步
+                    this.$refs.firstStepForm.validate(valid => {
+                        debugger
+                        if(valid){
+                            this.currentActive = 2
+                        }else {
+
+                        }
+                    })
+                }else if(this.currentActive == 2){
+                    debugger
+                    // 第二步
+                    this.$refs.secondStepForm.validate(valid => {
+                        debugger
+                        if(valid){
+                            this.currentActive = 3
+                        }else {
+
+                        }
+                    })          
+                }else if(this.currentActive == 3){
+                    this.$router.push({
+                        path: '/login'
+                    })
+                } 
+
             }
         }
     }

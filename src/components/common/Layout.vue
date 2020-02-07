@@ -12,12 +12,13 @@
         height 100%
         .routerCotentBox
             height calc(100vh - 60px)
+            overflow auto
             .contentBox
                 height 100%
 </style>
 
 <template>
-    <el-row :span="24">
+    <el-row :span="24" class="animated fadeIn">
         <div class="app-wrapper">
             <menu-cmp></menu-cmp>
 
