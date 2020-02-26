@@ -81,7 +81,7 @@
                 <span class="el-dropdown-link marginR10">
                     <icon-svg :icon-class="people"></icon-svg>
                     <span style="color:rgb(255, 255, 255);background-color:rgb(21, 21, 25);display:inline-block;margin-top:10px">个人中心</span>
-                    <i class="el-icon-arrow-down el-icon--right" style="color:#ffffff;vertical-align:middle"></i>
+                    <i class="el-icon-arrow-down el-icon--right" style="color:#ffffff;margin-left:-1px;vertical-align:middle"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="myProject">查看记录</el-dropdown-item>
