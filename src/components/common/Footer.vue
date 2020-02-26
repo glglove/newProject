@@ -6,14 +6,26 @@
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 .footerCmp
+    // position fixed
+    // bottom 0
+    width  100%
+    // height 50px
+    text-align center
     padding 20px 
+    background rgba(85,93,101,1)
     box-sizing border-box
+    z-index 10000
+    .foot_text
+        font-size 12px
+        color #999
 </style>
 
 <template>
     <div class="footerCmp">
-        底部内容
-        
+        <p class="foot_text marginAuto u-f-jac">
+            <el-image style="width: 80px;height: 80px;margin-right: 20px" fit="contain" :src="require('@/assets/pic/qrcode_gaolong.jpg')"></el-image>
+            Copyright © 1998 - 2020 a.kui. All Rights Reserved.
+        </p>
     </div>
 </template>
 

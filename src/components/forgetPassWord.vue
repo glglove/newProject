@@ -7,11 +7,10 @@
 <style lang="stylus" rel="sheetStylus" scoped>
 >>>.el-form-item__error
     margin-left 30px !important
-.loginBox 
-    height 100%
+.forgetPassWordBox 
     width 100%
     .el-row
-        height 100%
+        height calc(100vh - 60px)
         width 100%
         .el-col
             position relative
@@ -43,7 +42,7 @@
 </style>
 
 <template>
-    <div class="loginBox">
+    <div class="forgetPassWordBox">
         <el-row>
             <el-col :span="24">
                 <div class="forgetFormBox">
@@ -51,9 +50,9 @@
                         <h3 class="marginB20">找回密码</h3>
                         <div class="stepTitBox">
                             <el-steps :active="currentActive" align-center>
-                                <el-step title="步骤 1" description="输入您的账号"></el-step>
-                                <el-step title="步骤 2" description="安全验证与新密码设置"></el-step>
-                                <el-step title="步骤 3" description="设置成功"></el-step>
+                                <el-step title="输入您的账号" description=""></el-step>
+                                <el-step title="安全验证与新密码设置" description=""></el-step>
+                                <el-step title="设置成功" description=""></el-step>
                             </el-steps>
                         </div>
 

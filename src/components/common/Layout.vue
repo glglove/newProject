@@ -5,21 +5,26 @@
 -->
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-.el-row
-    height 100%
+.layout
+    // height calc(100vh - 0px)
+    min-height 100%
     background #f4f7f9
     .app-wrapper
-        height 100%
+        min-height 100%
         .routerCotentBox
-            height calc(100vh - 60px)
-            overflow auto
+            // min-height calc(100vh - 60px)
+            // overflow auto
+            // height calc(100vh - 60px)
+            // height 100%
             .contentBox
-                height 100%
+                // height calc(100vh - 60px)
+                min-height 100%
 </style>
 
 <template>
-    <el-row :span="24" class="animated fadeIn">
+    <el-row :span="24" class="layout animated fadeIn">
         <div class="app-wrapper">
+
             <menu-cmp></menu-cmp>
 
             <div class="routerCotentBox">
@@ -30,21 +35,29 @@
                         </div>
                     </keep-alive>
                 </transition>
-            </div>
-        </div>
-    </el-row>
+            </div>    
+
+        </div>   
+
+        <footer-cmp></footer-cmp> 
+    </el-row>    
 </template>
 
 <script type="text/ecmascript-6">
 import MenuCmp from '@/components/common/Menu.vue'
+import FooterCmp from '@/components/common/Footer.vue'
 export default {
     components: {
-        MenuCmp
+        MenuCmp,
+        FooterCmp
     },
     data() {
         return {
             activeIndex: '1'
         }
+    },
+    created(){
+        // console.log("---------",this.$checkNetWork_mobile())
     },
     methods:{
       handleSelect(key, keyPath) {

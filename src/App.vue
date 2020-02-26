@@ -1,8 +1,24 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
+
+    <el-backtop target="#app" :bottom='150' :visibility-height="10">
+      <div
+        style="{
+          height: 100%;
+          width: 100%;
+          background-color: #f2f5f6;
+          box-shadow: 0 0 6px rgba(0,0,0, .12);
+          text-align: center;
+          line-height: 40px;
+          color: #1989fa;
+        }"
+      >
+        UP
+      </div>      
+    </el-backtop>     
   </div>
 </template>
 
@@ -29,8 +45,9 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 @import "./assets/css/index.styl"
   #app 
-    font-family: Helvetica, sans-serif;
-    text-align: center;
-    width: 100%;
-    height: 100%
+    font-family Helvetica, sans-serif
+    text-align center
+    width 100%
+    height 100%
+    overflow auto
 </style>

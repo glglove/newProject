@@ -8,10 +8,9 @@
 >>>.el-form-item__error
     margin-left 30px !important
 .loginBox 
-    height 100%
     width 100%
     .el-row
-        height 100%
+        height calc(100vh - 60px)
         width 100%
         .el-col
             position relative
@@ -59,8 +58,8 @@
 </style>
 
 <template>
-    <div class="loginBox">
-        <el-row>
+    <div class="page loginBox">
+        <el-row class="page_login">
             <el-col :span="24">
                 <div class="loginFormBox">
                     <el-card class="card-box">

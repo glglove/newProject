@@ -7,11 +7,10 @@
 <style lang="stylus" rel="sheetStylus" scoped>
 >>>.el-form-item__error
     margin-left 30px !important
-.loginBox 
-    height 100%
+.registerBox 
     width 100%
     .el-row
-        height 100%
+        height calc(100vh - 60px)
         width 100%
         .el-col
             position relative
@@ -61,7 +60,7 @@
 </style>
 
 <template>
-    <div class="loginBox">
+    <div class="registerBox">
         <el-row>
             <el-col :span="24">
                 <div class="loginFormBox">
