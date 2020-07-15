@@ -15,13 +15,20 @@
             margin 0 auto
             .col_fixed
                 position fixed 
+                width 150px
+                height 500px
                 top 100px
-                left 200px
+                left 20px
+                z-index 1
+                ul
+                    background rgba(0,0,0,.1)
             .col_right
                 // border 1px solid red
-                margin-left 380px
+                margin-left 200px
                 margin-top 20px
                 padding-bottom 100px
+                // height calc(100vh - 200px)
+                overflow auto
                 box-sizing border-box
                 .card-right
                     // height calc(100vh - 200px)
@@ -30,8 +37,8 @@
 <template>
     <div :class="['page_personalCenter', noData?'not_found':'']">
         <el-row>
-            <el-col class="colWrap" :span="20">
-                <el-col class="col_fixed" :span="4">
+            <el-col class="colWrap" :span="24">
+                <div class="col_fixed">
                     <el-menu
                     :default-active="currentActive"
                     class="el-menu-vertical-demo"
@@ -56,10 +63,10 @@
                         <span slot="title">升级为vip</span>
                     </el-menu-item>
                     </el-menu>                    
-                </el-col>
+                </div>
 
 
-                <el-col class="col_right" :span="16">
+                <el-col class="col_right" :span="14">
                     <el-card class="card-right">
                         <router-view></router-view>
                     </el-card>

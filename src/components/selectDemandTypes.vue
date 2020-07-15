@@ -14,11 +14,11 @@
         line-height 30px
         // border-bottom 1px solid silver
     .grid-container
-        width 70%
-        margin 50px  auto 50px auto
+        // width 70%
+        margin 50px  auto
         .item
-            width 15%
-            margin 10px
+            width 20%
+            // margin 10px
             &.isHover
                 cursor pointer        
             .imageBox
@@ -108,7 +108,7 @@
 
                     <!--releaseDemand页面--->
                     <div :class="['card_bottom', 'marginT10']">
-                        <span class="tit_name">{{item.name}}</span>
+                        <span class="tit_name ellipsis1">{{item.name}}</span>
                         <div class="bottom clearfix" v-show="!item.isHover">
                             <el-button type="text" class="button" style="color: #48576a">{{item.tip}}</el-button>
                         </div>

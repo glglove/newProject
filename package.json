@@ -11,7 +11,6 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "amfe-flexible": "^2.2.1",
     "awe-dnd": "^0.3.1",
     "axios": "^0.17.0",
     "babel-polyfill": "^6.26.0",

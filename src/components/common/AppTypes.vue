@@ -8,11 +8,11 @@
 .el-card
     background-color #F4F7F9 !important
 .grid-container
-    width 70%
-    margin 50px  auto 50px auto
+    width 80%
+    margin 50px  auto
     .item
-        width 15%
-        margin 10px
+        width 20%
+        // margin 10px
         &.isHover
             cursor pointer        
         .imageBox
@@ -70,7 +70,7 @@
 
 <template>
     <el-row 
-        class="grid-container wrap1330 u-f-ac u-f-ajc u-f-wrap"
+        class="grid-container wrap1330  u-f-ajc u-f-wrap"
         :style="styleBox">
         <!--home页面--->
         <div 
@@ -97,7 +97,7 @@
                 <!--home页面---->
                 <div :class="['card_bottom', 'marginT10']" 
                     @click="releaseTypesDemand(item)">
-                    <span class="tit_name">{{item.name}}</span>
+                    <span class="tit_name ellipsis1">{{item.name}}</span>
                     <div class="bottom clearfix" v-show="!item.isHover">
                         <el-button type="text" class="button" style="color: #48576a">{{item.tip}}</el-button>
                     </div>

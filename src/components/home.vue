@@ -17,7 +17,7 @@
     .topBannerBox
         position relative
         width 100%
-        min-height 300px
+        // min-height 300px
         .top_tit_box
             position absolute
             top 0
@@ -37,14 +37,18 @@
                     letter-spacing 50px
                 .tit_middle
                     width 100%
-                    font-size 33px
+                    font-size 30px
                     font-weight 400
                     color #ffffff
                     margin-top 20px
-                    letter-spacing 20px
+                    letter-spacing 5px
                 .releaseBtn
                     width 100%
                     margin-top 40px
+                    .btn
+                        width 250px
+                        height 50px
+                        border-radius 100px
     .recommend
         margin-bottom 50px
         .tit
@@ -66,15 +70,19 @@
         margin 0 auto
         .el-carousel
             overflow-y hidden
+            // height 350px
             .el-carousel__item
                 // position relative
                 // display inline-block
                 background-color #ffffff
+                display flex
+                flex-direction column
+                justify-content center
                 .carouselTit
-                    position absolute
-                    top 55%
-                    left 50%
-                    transform translate(-50%, -50%)
+                    // position absolute
+                    // top 55%
+                    // left 50%
+                    // transform translate(-50%, -50%)
                     .tip
                         // width 185px
                         font-weight 300
@@ -130,14 +138,14 @@
                                 <p class="tit_middle u-f0">全网最新私活,项目，快！全！真！</p>
                                 <div class="releaseBtn u-f0">
                                     <el-button 
-                                        style="width: 250px;height: 50px;border-radius:100px"
+                                        class="btn"
                                         type="primary"
                                         round
                                         @click.native="scanNeeds">
                                         查看私活项目
                                     </el-button>                                    
                                     <el-button 
-                                        style="width: 250px;height: 50px;border-radius:100px"
+                                        class="btn"
                                         round
                                         @click.native="release">
                                         免费发布需求
@@ -215,12 +223,12 @@
                     <el-row class="carousel">
                         <el-col :span="24">
                             <el-carousel 
-                                height="350px"
+                                class="carousel-item-box"
                                 :interval="2500"
                                 arrow="never"
                                 type="card"
                                 direction="horizontal"
-                                :autoplay="true">
+                                :autoplay="false">
                                 <el-carousel-item 
                                     v-for="(item, key) in carousel"
                                     :key="key"
@@ -232,13 +240,13 @@
                                         style="width: 200px;margin-top: 30px"
                                     >
                                     </el-image> -->
-                                    <icon-svg :icon-class="item.svgStr" class="marginT50"></icon-svg>                                        
-                                    <div class="carouselTit">
+                                    <icon-svg :icon-class="item.svgStr" class="marginT20 marginAuto"></icon-svg>                                        
+                                    <div class="carouselTit marginT10">
                                         <h5>{{item.titName}}</h5>
-                                        <P class="tip" v-show="key ==0">发现最新匹配的项目信息,<br>
+                                        <P class="tip ellipsis3" v-show="key ==0">发现最新匹配的项目信息,<br>
                                          立即给您邮件推送,获取信息,快人一步！</P>
-                                        <P class="tip" v-show="key ==1">已收集<span style="color: #039be5">UpWork, Freelancer</span>, <br><span style="color: #039be5">Coding码市, YesPmp, OsChina众包</span>, <br><span>SxSoft, TaskCity, 猿急送, 猪八戒 等知名平台最新项目</span></P>
-                                        <P class="tip" v-show="key ==2">可发布关于Logo设计,Flash动画,<br>电子商务,网页美工及设计,微信<br>
+                                        <P class="tip ellipsis3" v-show="key ==1">已收集<span style="color: #039be5">UpWork, Freelancer</span>, <br><span style="color: #039be5">Coding码市, YesPmp, OsChina众包</span>, <br><span>SxSoft, TaskCity, 猿急送, 猪八戒 等知名平台最新项目</span></P>
+                                        <P class="tip ellipsis3" v-show="key ==2">可发布关于Logo设计,Flash动画,<br>电子商务,网页美工及设计,微信<br>
                                          公众平台,VBA,Ipad,知识产权,财<br>税,科技,品牌设计,营销推广, 网络<br>编辑,网站建设,电商,游戏,影视动<br>漫,软件开发相关私活,并为您推<br>荐合适的优秀专业人才</P>                                                                             
                                     </div>
                                 </el-carousel-item>

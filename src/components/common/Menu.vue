@@ -16,9 +16,13 @@
 .top-box {
     position: relative;
     .menuBox {
+        // width: 100%;
+        // float: left;
+        padding-left: 100px;
+        box-sizing: border-box;
         ul {
-            padding-left: 20%;
             box-sizing: border-box;
+            border-bottom: none !important;
             li {
                 // float: right !important;
                 font-size: 16px !important;
@@ -35,17 +39,16 @@
         }
     }
     .top-login-box {
-        position: absolute;
-        top: 15px;
-        right: 10px;
-        width: 200px;
+        /deep/.el-dropdown {
+            padding: 15px 0
+        }
     }
 }
 </style>
 
 <template>
-    <div class="top-box">
-        <div class="menuBox">
+    <el-row class="top-box u-f-ajc">
+        <el-col :span="20" class="menuBox u-f0">
             <el-menu
                 :default-active="activeIndex"
                 :staticEnableDefaultPopOutImage="false"
@@ -74,9 +77,9 @@
                 <el-menu-item index="/turnDeveloper">成为开发者</el-menu-item>
 
             </el-menu>
-        </div>
+        </el-col>
 
-        <div class="top-login-box" v-if="isLogin">
+        <el-col  :span="4" class="top-login-box u-f-ajc u-f-column" v-if="isLogin">
             <el-dropdown @command="handleCommand">
                 <span class="el-dropdown-link marginR10">
                     <icon-svg :icon-class="people"></icon-svg>
@@ -98,8 +101,8 @@
                 @click.native="handlerPersonal">
                 升级为vip
             </el-button>            -->
-        </div>
-        <div class="top-login-box" v-if="!isLogin">
+        </el-col>
+        <el-col :span="4" class="top-login-box" v-if="!isLogin">
             <el-button 
                 type="primary" 
                 size="mini"
@@ -112,8 +115,8 @@
                 @click.native="handlerRegister">
                 注册
             </el-button>         
-        </div>        
-    </div>
+        </el-col>        
+    </el-row>
 </template>
 
 <script type="text/ecmascript-6">
@@ -137,8 +140,19 @@ export default {
             handler(to, from) {
                 debugger
                 this.activeIndex = to.path
+                switch(this.activeIndex){
+                    case '/projectDetail':
+                        this.activeIndex = "/projectList"
+                        break
+                    case '/releaseDemand':
+                        this.activeIndex = "/selectDemandTypes"
+                        break
+                    default:
+                        this.activeIndex = "/index"
+                        break
+                }
             },
-            immediate: true
+            // immediate: true
         }
     },
     methods:{

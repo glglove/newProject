@@ -25,7 +25,7 @@
     <el-row :span="24" class="layout animated fadeIn">
         <div class="app-wrapper">
 
-            <menu-cmp></menu-cmp>
+            <menu-cmp class="menuCmp" style="background:rgb(21, 21, 25)"></menu-cmp>
 
             <div class="routerCotentBox">
                 <transition name="fade" mode="out-in">
@@ -36,7 +36,6 @@
                     </keep-alive>
                 </transition>
             </div>    
-
         </div>   
 
         <footer-cmp></footer-cmp> 

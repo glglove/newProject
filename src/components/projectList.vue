@@ -15,11 +15,13 @@
             border-bottom 1px solid silver
             box-sizing border-box
             .tit
-                width 130px
-                font-size 14px
+                width 200px
+                font-size 16px
                 color #151519
             .cat_item_box
+                min-height 150px
                 .catitem
+                    font-size 16px
                     border none 
                     color #999
                     &:first-child
@@ -27,11 +29,13 @@
                         color #ffffff
         .buget
             .tit
-                width 130px
-                font-size 14px 
+                width 200px
+                font-size 18px 
                 color #151519
             .buget_item_box
+                min-height 150px
                 .bugetitem
+                    font-size 18px
                     border none 
                     color #999
                     &:first-child
@@ -40,24 +44,44 @@
     .catProjectListBox
         .catprojectitem
             .leftContent
+                // width 200px
+                .el-image
+                    width 50px
+                    height 50px
             .rightContent
+                margin-left 50px
+                min-height 150px
                 .top
                     font-size 14px
                     font-weight 400
                     .top_left
+                        min-height 200px                    
+                        .tit
+                            font-size 18px
+                        .tag
+                            margin-top 30px
                     .top_right
-                      .money
+                        margin-left 50px
+                        .money
+                          font-size 18px
                           color #f00
                 .bottom
+                    margin-left 50px
+                    min-height 200px
                     font-size 14px
                     font-weight 400
+                    .scan 
+                        font-size 18px
+                    .contact
+                        font-size 18px
+                        
 
 </style>
 
 <template>
     <div :class="['page_projectList', noData?'not_found':'']">
         <el-row class="projectListBox marginT50">
-            <el-col :span="12" class="projectRow marginAuto">
+            <el-col :span="18" class="projectRow marginAuto">
                 <div class="searchBox u-f-ac u-f-jsb">
                     <el-input 
                         class="u-fs2 marginR5"
@@ -77,7 +101,7 @@
                         shadow="never"
                         class="card-box"
                     >
-                        <div class="cat u-f-ac u-f-jsb">
+                        <div class="cat u-f-ac u-f-jst">
                             <div class="tit">应用类型：</div>
                             <div class="cat_item_box u-f-ac u-f-wrap">
                                 <el-button
@@ -91,7 +115,7 @@
                             </div>
                         </div>
 
-                        <div class="buget marginT20 u-f-ac u-f-jsb">
+                        <div class="buget marginT20 u-f-ac u-f-jst">
                             <div class="tit">金额范围：</div>
                             <div class="buget_item_box u-f-ac u-f-wrap">
                                 <el-button
@@ -112,14 +136,14 @@
                         shadow="hover"
                         class="card-box"
                     >
-                        <div class="catprojectitem u-f-ac u-f-jsb">
-                            <div class="leftContent u-f0 marginR10">
-                                <el-image style="width: 50px" it="contain" :src="require('@/assets/logo.png')"></el-image>
+                        <div class="catprojectitem u-f-ac u-f-ajc">
+                            <div class="leftContent u-f-ajc u-f-column u-f0 marginR10">
+                                <el-image fit="contain" :src="require('@/assets/logo.png')"></el-image>
                             </div>
 
-                            <div class="rightContent u-f1">
+                            <div class="rightContent u-f-ac u-f1">
                                 <div class="top u-f-ac u-f-jsb">
-                                    <div class="top_left">
+                                    <div class="top_left u-f-ajc u-f-column u-wrap">
                                         <h4 class="tit">
                                             企业ERP系统包含OA功能
                                         </h4>
@@ -135,12 +159,12 @@
                                         </div>
                                     </div>
                                 </div>   
-                                <div class="bottom u-f-ac u-f-jsb">
-                                    <div class="marginT20">
+                                <div class="bottom u-f-ajc u-f-column">
+                                    <div class="scan u-f-ac marginT20">
                                         <span style="font-size: 14px;color:#999">项目详情简介：</span>
                                         <el-button type="text" size="mini" @click.native="scanDetail">查看</el-button>
                                     </div>
-                                    <div class="u-f-ac u-f-jsb">
+                                    <div class="contact u-f-ac u-f-jsb marginT10">
                                         <p class="time marginR10" style="font-size: 14px;color:#999">发布于 2020-02-19</p>
                                         <el-button type="text" size="mini">查看联系方式</el-button>                                        
                                     </div>
@@ -151,7 +175,7 @@
 
                     <el-pagination
                         style="width:100%;text-align:right"
-                        class="paginationCmp marginT5"
+                        class="paginationCmp marginT10"
                         background
                         layout="prev, pager, next"
                         :total="1000">

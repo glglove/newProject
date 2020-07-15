@@ -5,7 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router/index.js' // vue-router 路由
 import store from './store/index.js' // vuex状态管理
-// import 'lib-flexible' 
+import 'lib-flexible'  // 移动端适配  不同的手机设备尺寸，控制 html 标签 font-size 的变化。
 // import { setRemFn } from './rem.js'
 // setRemFn()
 import {publicObj} from './utils/public.js' // 公用方法
@@ -29,11 +29,15 @@ console.log("----",publicObj)
 
 const scrollBehavior = function (to, from, savedPosition) {
   debugger
-  return to.meta
-  // return {
-  //   x:0,
-  //   y:0
-  // }
+  if(savedPosition){
+    return savedPosition
+  }else {
+    return to.meta
+    // return {
+    //   x:0,
+    //   y:0
+    // }
+  }
 }
 
 new Vue({
@@ -79,8 +83,8 @@ new Vue({
         // this.$route.meta.y = window.scrollY
         // this.$route.meta.y = document.getElementsByClassName("app-wrapper")[0].scrollTop
         // this.$route.meta.y = window.pageYOffset
-        // this.$route.meta.y = document.getElementById("app").scrollTop
-        this.$route.meta.y = 0
+        this.$route.meta.y = document.getElementById("app").scrollTop
+        // this.$route.meta.y = 0
         console.log(this.$route.meta)
       }, 300)
     },
