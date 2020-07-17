@@ -63,6 +63,7 @@ new Vue({
       // console.log(appWrapper.offset().top)
       // appWrapper.addEventListener('scroll', this.justifyPos,false)
       document.getElementById("app").addEventListener('scroll', this.justifyPos,false)
+      // document.getElementById("app").addEventListener('resize', this.resizeScreen,false)
     },1000)
   },
   destroyed () {
@@ -70,8 +71,12 @@ new Vue({
     // 该方法是绑定到 window 身上，即使跳转到其他组件，仍然会监听页面的滚动行为
     // window.removeEventListener('scroll', this.justifyPos)
     clearTimeout(this.timerId)
-  },
+    // document.getElementById("app").removeEventListener("resize")
+  },  
   methods: {
+    resizeScreen () {
+      // location.reload()
+    },
     justifyPos () {
       console.log(window.scrollY)
       console.log(document.getElementById("app").scrollTop)

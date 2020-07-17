@@ -18,14 +18,16 @@
     .menuBox {
         // width: 100%;
         // float: left;
-        padding-left: 100px;
+        padding-left: 60px;
         box-sizing: border-box;
         ul {
             box-sizing: border-box;
             border-bottom: none !important;
             li {
                 // float: right !important;
-                font-size: 16px !important;
+                font-size: 24px !important;
+                padding: 0 15px !important;
+                font-weight: 600 !important;
                 .el-submenu__title {
                     font-size: 16px !important;
                     i {
@@ -48,7 +50,7 @@
 
 <template>
     <el-row class="top-box u-f-ajc">
-        <el-col :span="20" class="menuBox u-f0">
+        <el-col :span="18" class="menuBox u-f0">
             <el-menu
                 :default-active="activeIndex"
                 :staticEnableDefaultPopOutImage="false"
@@ -79,7 +81,7 @@
             </el-menu>
         </el-col>
 
-        <el-col  :span="4" class="top-login-box u-f-ajc u-f-column" v-if="isLogin">
+        <el-col  :span="6" class="top-login-box u-f-ajc u-f-column" v-if="isLogin">
             <el-dropdown @command="handleCommand">
                 <span class="el-dropdown-link marginR10">
                     <icon-svg :icon-class="people"></icon-svg>
@@ -102,7 +104,7 @@
                 升级为vip
             </el-button>            -->
         </el-col>
-        <el-col :span="4" class="top-login-box" v-if="!isLogin">
+        <el-col :span="6" class="top-login-box" v-if="!isLogin">
             <el-button 
                 type="primary" 
                 size="mini"
@@ -121,13 +123,14 @@
 
 <script type="text/ecmascript-6">
   import iconSvg from '@/components/common/Icon-svg/index'
+  import { mapGetters } from 'vuex'
 export default {
     components: {
         iconSvg
     },
     data() {
         return {
-            activeIndex: '/index',
+            // activeIndex: '/index',
             isLogin: true,
             people: 'avator' 
         }
@@ -135,24 +138,35 @@ export default {
     created(){
 
     },
+    computed: {
+        ...mapGetters(["activeIndex"])
+    },
     watch: {
         '$route': {
             handler(to, from) {
                 debugger
-                this.activeIndex = to.path
-                switch(this.activeIndex){
+                switch(to.path){
+                    case '/index':
+                        this.$store.dispatch("setCurrentActive",'/index')                        
+                        break       
+                    case '/projectList':
+                        this.$store.dispatch("setCurrentActive",'/projectList')                        
+                        break     
+                                       
                     case '/projectDetail':
-                        this.activeIndex = "/projectList"
+                        this.$store.dispatch("setCurrentActive",'/projectList')                                                
                         break
+                    case '/selectDemandTypes':
+                        this.$store.dispatch("setCurrentActive",'/selectDemandTypes')                                                
+                        break                        
                     case '/releaseDemand':
-                        this.activeIndex = "/selectDemandTypes"
+                        this.$store.dispatch("setCurrentActive",'/selectDemandTypes')                                                
                         break
                     default:
-                        this.activeIndex = "/index"
+                        this.$store.dispatch("setCurrentActive",'/index')                                                                        
                         break
                 }
             },
-            // immediate: true
         }
     },
     methods:{
@@ -170,7 +184,8 @@ export default {
         //         this.activeIndex = '3'
         //         break
         // }
-        this.activeIndex = key
+        // this.activeIndex = key
+        // this.$store.dispatch("setCurrentActive",key)
       },
       // 登陆
       handlerLogin(){

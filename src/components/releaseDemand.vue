@@ -26,7 +26,7 @@
 <template>
     <el-row 
         class="demand-container">
-        <el-col :span="14" style="margin: 0 auto; float: none">
+        <el-col :span="22" style="margin: 0 auto; float: none">
             <el-form ref="formObj" :model="formObj" :rules="formObjRules" label-width="120px">
                 <el-card class="card-box_first marginT50" type="card">
                     <div slot="header" class="clearfix">
@@ -131,7 +131,7 @@
                         </span> -->
                     </div>
                     <div class="container" style="padding-bottom: 80px">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="姓名" prop="contactName" label-width="120px">
                                 <el-input 
                                     v-model="formObj.contactName"

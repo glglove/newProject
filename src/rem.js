@@ -6,7 +6,7 @@ export const setRemFn = function () {
         //得到html的Dom元素
         let htmlDom = document.getElementsByTagName('html')[0];
         //设置根元素字体大小
-        htmlDom.style.fontSize= htmlWidth/150 + 'px';
+        htmlDom.style.fontSize= htmlWidth/16 + 'px';
         console.log("----------",htmlDom.style.fontSize)
     }
     // 初始化

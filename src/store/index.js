@@ -24,6 +24,9 @@ const vuexLocal = new VuexPersistense({
         tableCodeCustomer: val.directive.tableCodeCustomer,
         flowRuleScanFlag: val.directive.flowRuleScanFlag,
         currentTabStr: val.directive.currentTabStr
+      },
+      app: {
+        activeIndex: val.app.activeIndex
       }
     }
   }

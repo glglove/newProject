@@ -1,3 +1,5 @@
+export const activeIndex = state => state.app.activeIndex
+
 export const sidebar = state => state.app.sidebar
 
 export const visitedViews = state => state.app.visitedViews

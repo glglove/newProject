@@ -281,8 +281,14 @@
         },
         methods: {
             handlerClick(item){
-                debugger
+                // debugger
                 item.isSelected = true
+                this.$router.push({
+                    path: '/releaseDemand',
+                    query: {
+                        id: item.id
+                    }
+                })                
             },
             mouseoverStyle(item){
                 // debugger

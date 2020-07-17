@@ -29,6 +29,13 @@ export default {
   components: {
     Home
   },
+  mounted() {
+    let _this = this
+
+  },
+  destroyed(){
+
+  },
   methods: {
     startHacking () {
       this.$notify({

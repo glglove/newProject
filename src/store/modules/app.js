@@ -8,6 +8,7 @@ const app = {
     },
     visitedViews: [],
     online: navigator.onLine, // pc端网络状态
+    activeIndex: '/index',  
   },
   mutations: {
     [types.SET_TOGGLE_SIDEBAR] (state, sidebarStatus) {
@@ -18,6 +19,9 @@ const app = {
     },
     [types.NETWORKSTATUS] (state, flag) {
       state.online = flag
+    },
+    [types.CURRENTACTIVE] (state, str) {
+      state.activeIndex = str
     }
   },
   actions: {
@@ -57,6 +61,10 @@ const app = {
     // 设置网络状态
     netWorkChangeStatus({commit, state},flag){
       commit(types.NETWORKSTATUS, flag)
+    },
+    // 当前的menu
+    setCurrentActive ( {commit, state}, str ) {
+      commit(types.CURRENTACTIVE, str)
     }
   }
 }
